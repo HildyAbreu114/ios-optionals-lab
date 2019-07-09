@@ -8,13 +8,22 @@ Fork and clone this repo. On your fork, answer and commit the follow questions. 
 `var userName: String?`
 
 Write 3 different ways of safely unwrapping and printing the value of `userName`.  If it is nil, print "No name".
-
+```
 - Method one: Check for nil and force unwrap
+var name: String? = "user"
+var name2 = "name"
+print (name! + name2)
 
 - Method two: Optional binding
-
+var name: String? = "username"
+if let name = name {
+print (name)
+}
 - Method three: Nil coalescing
-
+var username: Bool?
+var unwrappedUser = username ??
+print (unwrappedUser)
+```
 
 ## Question 2
 
@@ -22,7 +31,13 @@ Given optional string `backgroundColor`, write code that safely unwraps and prin
 
 `var backgroundColor: String?`
 
-
+var backgroundColor: String?
+backgroundColor = "grey"
+if let bindingBackgroundColor = backgroundColor {
+print ("My background color is \(bindingBackgroundColor)")
+}
+```
+```
 ## Question 3
 
 Given an optional width and an optional height of a rectangle, write code that calculates and prints the area. Print an error message if either value is nil.
@@ -30,9 +45,19 @@ Given an optional width and an optional height of a rectangle, write code that c
 ```swift
 var width: Double?
 var height: Double?
+
+var width: Double? = 10.0
+var height: Double? = 8.0
+if let bindingWidth = width{
+if let bindingHeight = height {
+
+print( bindingWidth * bindingHeight )
+
+}
+}else {
+print("error")
+}
 ```
-
-
 ## Question 4
 
 Given the following optional variables `name`, `age` and `height`. Write code so that it prints `name`, `age` and `height` if they all have a value. If any are nil, print an error message. Try using optional binding.
@@ -41,8 +66,19 @@ Given the following optional variables `name`, `age` and `height`. Write code so
 var name: String?
 var age: Int?
 var height: Double?
-```
 
+var name: String? = "Melissa"
+var age: Int? = 27
+var height: Double? = 5.6
+if let name = name{
+if let age = age {
+if let height = height {
+print ( name, age, height)
+}
+}
+}
+}```
+```
 
 ## Question 5
 
@@ -52,6 +88,16 @@ Given the variables `firstName`, `middleName` and `lastName`. Create a variable 
 var firstName: String = "Johnny"
 var middleName: String?
 var lastName: String = "Stone"
+
+var firstName: String = "Johnny"
+var middleName: String?
+var lastName: String = "Stone"
+middleName = "Cash"
+
+var fullname = ("\(firstName)" + "\(middleName!)" + "\(lastName)")
+print ("My full name is \(fullname)")
+
+
 ```
 
 
@@ -61,6 +107,15 @@ Write code that adds 15 to `myIntString`, then prints the sum. Use the `Int()` c
 
 `let myIntString = "35"`
 
+let myIntString: String? = "35"
+
+var unwrappedString = myIntString ?? "empty"
+
+if let unwrappedString = myIntString {
+if let integerVersion = Int(unwrappedString) {
+print(integerVersion + 15)
+}
+}
 
 ## Question 7
 
@@ -73,6 +128,24 @@ var testCaseOne = (4, nil, 7)
 var testCaseTwo = (nil, nil, 9)
 var testCaseThree = (5, 10, 24)
 ```
+var testOne: (Int?, Int?, Int?)? = (4, nil, 7)
+var testTwo: (Int?, Int?, Int?)? = (nil, nil, 9)
+var testThree: (Int?, Int?, Int?)? = (5, 10, 24)
+var sum = 0
+let testCases = [testOne, testTwo, testThree]
+for tCase in testCases{
+if let currentCase = tCase{
+if let num1 = currentCase.0{
+sum += num1
+}
+if let num2 = currentCase.1{
+sum += num2
+}
+if let num3 = currentCase.2{
+sum += num3
+}
+}
+}
 
 
 ## Question 8
@@ -85,6 +158,13 @@ if Bool.random() {
  tuple = (5, 3)
 }
 ```
+var tuple: (Int, Int)?
+if Bool.random() {
+tuple = (5, 3)
+}
+if let tupleValue = tuple {
+print ( tupleValue)
+}
 
 
 ## Question 9
@@ -111,8 +191,18 @@ if Bool.random() {
  myDouble = 12
 }
 ```
+var myDouble: Double?
+let doubleTwo: Double = 5
 
+if Bool.random() {
+myDouble = 12
+}
+if let product = myDouble {
+print(product * doubleTwo)
 
+} else {
+print("does not compute")
+}
 ## Question 11
 
 Determine if the variable contains a Boolean or nil value. If nil set the variable to false, else keep it true.
@@ -124,7 +214,11 @@ if Bool.random() {
  isTheGreatest = true
 }
 ```
+var isTheGreatest: Bool?
 
+if Bool.random() {
+isTheGreatest = true
+};print(isTheGreatest ?? false )
 
 ## Question 12
 
@@ -141,7 +235,21 @@ if Bool.random() {
  myTuple.3 = 10
 }
 ```
+var myTuple: (Int?, Int?, Int?, Int?)
 
+if Bool.random() {
+myTuple.0 = 5
+myTuple.2 = 14
+} else {
+myTuple.1 = 9
+myTuple.3 = 10
+}
+let a = myTuple.0 ?? 0
+let b = myTuple.1 ?? 0
+let c = myTuple.2 ?? 0
+let d = myTuple.3 ?? 0
+var sum = a + b + c + d
+print(sum)
 
 ## Question 13
 
